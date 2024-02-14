@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native'
+import { Header } from '@/components/Header'
+import { View, Text, Platform } from 'react-native'
 
 export default function Home(){
     return(
-        <View style={{flex:1, backgroundColor:'gray'}}>
-            <Text style={{color:'#fff'}}>React Native</Text>
+        <View className={Platform.OS === 'android' ? 'flex-1 pt-8' : 'flex-1'}>
+            <Header title='Cadápio' />
         </View>
     )
 }
