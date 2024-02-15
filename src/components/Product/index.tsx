@@ -1,4 +1,5 @@
 import { Image, ImageProps, TouchableOpacity, TouchableOpacityProps, View, Text } from "react-native";
+import { forwardRef } from "react";
 
 interface PropsDataProduct {
     title: string;
@@ -10,9 +11,9 @@ interface PropsProducts extends TouchableOpacityProps {
     data: PropsDataProduct;
 }
 
-export function Product({data, ...rest}:PropsProducts){
+export const Product=forwardRef<TouchableOpacity,PropsProducts>(({data, ...rest},ref) => {
     return(
-        <TouchableOpacity className="flex-row items-center pb-4" {...rest}>
+        <TouchableOpacity ref={ref} className="flex-row items-center pb-4" {...rest}>
             <Image source={data.thumbnail} className="w-20 h-20 rounded-md" />
 
             <View className="flex-1 ml-3">
@@ -21,4 +22,4 @@ export function Product({data, ...rest}:PropsProducts){
             </View>
         </TouchableOpacity>
     )
-}
+})
